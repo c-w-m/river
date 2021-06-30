@@ -1063,19 +1063,7 @@ class ForestMemberRegressor(BaseForestMember, base.Regressor):
         self._var = stats.Var()  # Used to track drift
 
     def _drift_detector_input(self, y_true: float, y_pred: float):
-        drift_input = y_true - y_pred
-        self._var.update(drift_input)
-
-        if self._var.mean.n == 1:
-            return 0.5  # The expected error is the normalized mean error
-
-        sd = math.sqrt(self._var.get())
-
-        # We assume the error follows a normal distribution -> (empirical rule)
-        # 99.73% of the values lie  between [mean - 3*sd, mean + 3*sd]. We
-        # assume this range for the normalized data. Hence, we can apply the
-        # min-max norm to cope with  ADWIN's requirements
-        return (drift_input + 3 * sd) / (6 * sd) if sd > 0 else 0.5
+        return y_true - y_pred
 
     def reset(self, n_samples_seen):
         super().reset(n_samples_seen)
