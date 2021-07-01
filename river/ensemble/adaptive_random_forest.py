@@ -1063,7 +1063,7 @@ class ForestMemberRegressor(BaseForestMember, base.Regressor):
         self._var = stats.Var()  # Used to track drift
 
     def _drift_detector_input(self, y_true: float, y_pred: float):
-        return y_true - y_pred
+        return abs(y_true - y_pred)
 
     def reset(self, n_samples_seen):
         super().reset(n_samples_seen)
