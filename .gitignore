@@ -1,3 +1,13 @@
+# data
+benchmarks/libffm-master/
+benchmarks/libffm_toy/
+benchmarks/logistic_regression/
+benchmarks/HIGGS.csv.gz
+benchmarks/libffm_toy.zip
+benchmarks/libffm_model
+benchmarks/libffm_pred
+benchmarks/libffm_toy.zip
+
 # Documentation
 docs/getting-started/getting-started.md
 docs/getting-started/getting-started_files/
